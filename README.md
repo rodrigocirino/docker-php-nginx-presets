@@ -3,7 +3,6 @@
 ## Run
 
 ```
-
 $ docker-compose down && docker-compose up --build
 ```
 
@@ -28,4 +27,3 @@ $ docker-compose down && docker-compose up --build
 ---
 
 ![alt text](app/images/phpstorm5.png)
-

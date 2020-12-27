@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+    nginx_server:
+        container_name: nginx_server
+        image: nginx:latest
+        ports:
+            - "80:80"
+        volumes:
+            - ./app:/var/www/app
+            - ./.devops/nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./.devops/nginx/sites/:/etc/nginx/sites-available
+            - ./.devops/nginx/conf.d/:/etc/nginx/conf.d
+            - ./.devops/nginx/logs/:/var/log/nginx/
+        depends_on:
+            - php-fpm
+        networks:
+            - phpfpm-network
+
+    # - ./app:/var/www/app  ---> volumes need to be the same for nginx and fpm like
+    php-fpm:
+        container_name: php-fpm
+        build:
+            context: ./app
+        volumes:
+            - ./app:/var/www/app
+            - ./.devops/php-fpm/php.ini:/usr/local/etc/php/php.ini
+        networks:
+            - phpfpm-network
+
+networks:
+    phpfpm-network:
+        driver: bridge
+
+
+# Testing in http://localhost/test.php
+# mirrored volumes in docker is live reloading chages support.
+# nginx depends_on php_fpm, and not is the opposite
+

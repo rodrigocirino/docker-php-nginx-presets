@@ -1,4 +1,4 @@
-# Docker Compose = NGINX + PHP FPM 7.4
+# Docker Compose = NGINX + PHP FPM 7.2
 
 ```
 # RUN

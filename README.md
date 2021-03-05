@@ -1,12 +1,23 @@
-# Docker Compose = NGINX + PHP FPM 7.2 + XDebug 3
+## Starter kit to php project
 
-## Run
+    PHP 7.2-fpm-alpine
+    XDebug enable
+    Nginx
+    PHP-fpm
+    docker-compose
 
+### Run
+
+```bash
+$ docker-compose up
+# Test (no port)
+http://localhost
+http://localhost/test.php
 ```
-$ docker-compose down && docker-compose up --build
-```
 
-## Steps
+---
+
+### Configure PHPStorm Xdebugger
 
 ---
 
